@@ -140,3 +140,12 @@ while video_capture.isOpened():
 video_capture.release() # We turn the webcam/video off.
 cv2.destroyAllWindows() # We destroy all the windows inside which the images were displayed.
 """
+
+if __name__ == '__main__':
+    print('hey')
+    for file in os.listdir(inputs/images):
+        print('Reading', file)  
+        original_image = imageio.imread(os.path.join(input_image_path, file))	# Reading image
+        if original_image is not None:
+            output_image = detect_object(original_image)	# detecting objects
+            imageio.imwrite(os.path.join(output_image_path, file), output_image[:, :, :])	# savinng back images
